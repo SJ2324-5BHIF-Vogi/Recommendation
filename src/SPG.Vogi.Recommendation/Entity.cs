@@ -8,6 +8,8 @@
         public string Email { get; set; }
         public List<Posts> Posts{ get; set; } = new List<Posts>();
         public List<Posts> LikesPosts { get; set; } = new List<Posts>();
+        public List<User> Followings { get; set; } = new List<User>();
+        public List<User> Followers { get; set; } = new List<User>();
 
 
 
@@ -21,7 +23,7 @@
         public String Content { get; set; }
         public DateTime CreatedAt { get; set; }
         public List<User> Likes { get; set; }
-        public Dictionary<User, String> Comments { get; set; } = new Dictionary<User, String>();
+        //public Dictionary<User, String> Comments { get; set; } = new Dictionary<User, String>();
 
     }
 
