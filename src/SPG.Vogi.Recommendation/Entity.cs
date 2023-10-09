@@ -19,11 +19,10 @@
     {
         public int Id { get; set; }
         public Guid Guid { get; set; }
-        public User user { get; set; }
+        public User User { get; set; }
         public String Content { get; set; }
         public DateTime CreatedAt { get; set; }
         public List<User> Likes { get; set; }
-        //public Dictionary<User, String> Comments { get; set; } = new Dictionary<User, String>();
 
     }
 
