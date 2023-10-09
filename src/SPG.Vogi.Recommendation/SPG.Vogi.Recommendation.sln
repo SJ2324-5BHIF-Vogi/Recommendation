@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPG.Vogi.Recommendation.DomainModel", "SPG.Vogi.Recommendation.DomainModel.csproj", "{856E8935-816B-42F3-A6B5-89837125311B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPG.Vogi.Recommendation.DomainModelTest", "..\..\test\SPG.Vogi.Recommendation.DomainModelTest\SPG.Vogi.Recommendation.DomainModelTest.csproj", "{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{856E8935-816B-42F3-A6B5-89837125311B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{856E8935-816B-42F3-A6B5-89837125311B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{856E8935-816B-42F3-A6B5-89837125311B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
