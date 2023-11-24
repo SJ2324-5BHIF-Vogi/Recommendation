@@ -1,6 +1,10 @@
-﻿namespace SPG.Vogi.Recommendation.DomainModel
+﻿using MongoDB.Bson;
+using SPG.Vogi.Recommendation.Repository;
+
+namespace SPG.Vogi.Recommendation.DomainModel
 {
-    public class User
+    [BsonCollection("people")]
+    public class User : Document
     {
         public int Id { get; set; }
         public Guid Guid { get; set; }
@@ -16,9 +20,7 @@
         public IReadOnlyList<User> Followings => _followings;
         private List<User> _followers { get; set; } = new();
         public IReadOnlyList<User> Followers => _followers;
-
-
-
+       
     }
 
     

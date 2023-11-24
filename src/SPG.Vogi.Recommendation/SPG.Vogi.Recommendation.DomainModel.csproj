@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\test\SPG.Vogi.Recommendation.DomainModelTest\SPG.Vogi.Recommendation.DomainModelTest.csproj" />
+    <ProjectReference Include="..\SPG.Vogi.Recommendation.Repository\SPG.Vogi.Recommendation.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
