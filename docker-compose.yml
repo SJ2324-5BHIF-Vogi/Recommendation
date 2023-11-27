@@ -9,7 +9,7 @@ services:
     volumes:
       - mongodbdata:/data/db
 
-  rebbitmq:
+  rabbitmq:
     image: rabbitmq:management
     container_name: rabbitmq
     ports:
