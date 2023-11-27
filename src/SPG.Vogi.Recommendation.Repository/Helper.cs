@@ -47,4 +47,4 @@ namespace SPG.Vogi.Recommendation.Repository
         }
     }
 }
-}
+
