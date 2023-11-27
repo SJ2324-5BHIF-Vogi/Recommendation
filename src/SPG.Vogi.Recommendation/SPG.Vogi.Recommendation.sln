@@ -5,11 +5,11 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPG.Vogi.Recommendation.DomainModel", "SPG.Vogi.Recommendation.DomainModel.csproj", "{856E8935-816B-42F3-A6B5-89837125311B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPG.Vogi.Recommendation.DomainModelTest", "..\..\test\SPG.Vogi.Recommendation.DomainModelTest\SPG.Vogi.Recommendation.DomainModelTest.csproj", "{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPG.Vogi.Recommendation.Application", "..\SPG.Vogi.Recommendation.Application\SPG.Vogi.Recommendation.Application.csproj", "{9F36D9DD-910C-41CA-86D5-34BF9B90A37D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPG.Vogi.Recommendation.Repository", "..\SPG.Vogi.Recommendation.Repository\SPG.Vogi.Recommendation.Repository.csproj", "{3CC8DB84-0BBA-4A42-8093-052935A76779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPG.Vogi.Recommendation.UnitTests", "..\..\test\SPG.Vogi.Recommendation.UnitTests\SPG.Vogi.Recommendation.UnitTests.csproj", "{89907EF3-6E32-428B-A4C1-FCE3FC72EF29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{856E8935-816B-42F3-A6B5-89837125311B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{856E8935-816B-42F3-A6B5-89837125311B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{856E8935-816B-42F3-A6B5-89837125311B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D43296AC-761A-46D8-BC04-EF6FB05CBF5D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F36D9DD-910C-41CA-86D5-34BF9B90A37D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9F36D9DD-910C-41CA-86D5-34BF9B90A37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F36D9DD-910C-41CA-86D5-34BF9B90A37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{3CC8DB84-0BBA-4A42-8093-052935A76779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CC8DB84-0BBA-4A42-8093-052935A76779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CC8DB84-0BBA-4A42-8093-052935A76779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89907EF3-6E32-428B-A4C1-FCE3FC72EF29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89907EF3-6E32-428B-A4C1-FCE3FC72EF29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89907EF3-6E32-428B-A4C1-FCE3FC72EF29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89907EF3-6E32-428B-A4C1-FCE3FC72EF29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

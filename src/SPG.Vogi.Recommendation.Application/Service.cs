@@ -15,5 +15,7 @@ namespace SPG.Vogi.Recommendation.Application
             //MongoRepository<Person> _peopleRepository = new MongoRepository<Person>(mongoDbSettings);
             MongoRepository<Posts> mongoRepository = new MongoRepository<Posts> (mongoDbSettings);  
         }
+
+
     }
 }
