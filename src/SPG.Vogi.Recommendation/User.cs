@@ -3,7 +3,7 @@ using SPG.Vogi.Recommendation.Repository;
 
 namespace SPG.Vogi.Recommendation.DomainModel
 {
-    [BsonCollection("people")]
+    [BsonCollection("user")]
     public class User : Document
     {
         public int Id { get; set; }
