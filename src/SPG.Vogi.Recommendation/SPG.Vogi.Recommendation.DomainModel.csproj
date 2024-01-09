@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SPG.Vogi.Recommendation.Repository\SPG.Vogi.Recommendation.Repository.csproj" />
+    <PackageReference Include="MongoDB.Driver" Version="2.23.1" />
   </ItemGroup>
+
 
 </Project>

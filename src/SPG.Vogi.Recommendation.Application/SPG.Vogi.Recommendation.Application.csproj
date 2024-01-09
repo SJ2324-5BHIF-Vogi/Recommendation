@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SPG.Vogi.Recommendation.Repository\SPG.Vogi.Recommendation.Repository.csproj" />
     <ProjectReference Include="..\SPG.Vogi.Recommendation\SPG.Vogi.Recommendation.DomainModel.csproj" />
   </ItemGroup>
 

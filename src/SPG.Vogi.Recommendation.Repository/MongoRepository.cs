@@ -2,10 +2,13 @@
 using MongoDB.Driver;
 using System.Linq.Expressions;
 using System.Reflection.Metadata;
+using SPG.Vogi.Recommendation.DomainModel;
+using SPG.Vogi.Recommendation.DomainModel.Interfaces;
+using Document = SPG.Vogi.Recommendation.DomainModel.Document;
 
 namespace SPG.Vogi.Recommendation.Repository
 {
-    public class MongoRepository<TDocument>  where TDocument : Document
+    public class MongoRepository<TDocument> : IMongoRepository<TDocument> where TDocument : Document
         // https://medium.com/@marekzyla95/mongo-repository-pattern-700986454a0e
         // How to use!
     {

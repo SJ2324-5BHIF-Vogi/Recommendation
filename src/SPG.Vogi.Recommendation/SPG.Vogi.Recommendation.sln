@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPG.Vogi.Recommendation.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPG.Vogi.Recommendation.Repository", "..\SPG.Vogi.Recommendation.Repository\SPG.Vogi.Recommendation.Repository.csproj", "{3CC8DB84-0BBA-4A42-8093-052935A76779}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPG.Vogi.Recommendation.UnitTests", "..\..\test\SPG.Vogi.Recommendation.UnitTests\SPG.Vogi.Recommendation.UnitTests.csproj", "{89907EF3-6E32-428B-A4C1-FCE3FC72EF29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPG.Vogi.Recommendation.UnitTests", "..\..\test\SPG.Vogi.Recommendation.UnitTests\SPG.Vogi.Recommendation.UnitTests.csproj", "{89907EF3-6E32-428B-A4C1-FCE3FC72EF29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPG.Vogi.Recommendation.TextAnalyseTest", "..\SPG.Vogi.Recommendation.TextAnalyseTest\SPG.Vogi.Recommendation.TextAnalyseTest.csproj", "{2F53F381-07D3-4761-AC06-AE7E3417DCBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPG.Vogi.Recommendation.API", "..\SPG.Vogi.Recommendation.API\SPG.Vogi.Recommendation.API.csproj", "{3FB92563-3AE8-46E5-B3D0-3CB3CF6D036D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2F53F381-07D3-4761-AC06-AE7E3417DCBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F53F381-07D3-4761-AC06-AE7E3417DCBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F53F381-07D3-4761-AC06-AE7E3417DCBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB92563-3AE8-46E5-B3D0-3CB3CF6D036D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB92563-3AE8-46E5-B3D0-3CB3CF6D036D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB92563-3AE8-46E5-B3D0-3CB3CF6D036D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB92563-3AE8-46E5-B3D0-3CB3CF6D036D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,4 @@
 ﻿using MongoDB.Bson;
-using SPG.Vogi.Recommendation.Repository;
 
 namespace SPG.Vogi.Recommendation.DomainModel
 {

@@ -60,24 +60,24 @@ namespace SPG.Vogi.Recommendation.TextAnalyseTest
             writer.Flush(triggerMerge: false, applyAllDeletes: false);
         }
 
-        public void FetchResult(IndexWriter writer)
-        {
-            // Re-use the writer to get real-time updates
-            using var reader = writer.GetReader(applyAllDeletes: true);
-            var searcher = new IndexSearcher(reader);
-            var hits = searcher.Search(phrase, 20 /* top 20 */).ScoreDocs;
+        //public void FetchResult(IndexWriter writer)
+        //{
+        //    // Re-use the writer to get real-time updates
+        //    using var reader = writer.GetReader(applyAllDeletes: true);
+        //    var searcher = new IndexSearcher(reader);
+        //    var hits = //searcher.Search(phrase, 20 /* top 20 */).ScoreDocs;
 
-            // Display the output in a table
-            Console.WriteLine($"{"Score",10}" +
-                $" {"Name",-15}" +
-                $" {"Favorite Phrase",-40}");
-            foreach (var hit in hits)
-            {
-                var foundDoc = searcher.Doc(hit.Doc);
-                Console.WriteLine($"{hit.Score:f8}" +
-                    $" {foundDoc.Get("name"),-15}" +
-                    $" {foundDoc.Get("favoritePhrase"),-40}");
-            }
-        }
+        //    // Display the output in a table
+        //    Console.WriteLine($"{"Score",10}" +
+        //        $" {"Name",-15}" +
+        //        $" {"Favorite Phrase",-40}");
+        //    foreach (var hit in hits)
+        //    {
+        //        var foundDoc = searcher.Doc(hit.Doc);
+        //        Console.WriteLine($"{hit.Score:f8}" +
+        //            $" {foundDoc.Get("name"),-15}" +
+        //            $" {foundDoc.Get("favoritePhrase"),-40}");
+        //    }
+        //  }
     }
 }
