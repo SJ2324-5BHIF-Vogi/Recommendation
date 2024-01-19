@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SPG.Vogi.Recommendation.Application;
 using SPG.Vogi.Recommendation.DomainModel;
+using SPG.Vogi.Recommendation.DomainModel.Interfaces;
 
 namespace SPG.Vogi.Recommendation.API.Controllers
 {
@@ -8,17 +9,16 @@ namespace SPG.Vogi.Recommendation.API.Controllers
     [Route("[controller]")]
     public class PostsController : ControllerBase
     {
-        private readonly RecommService _service;
-
-
+        private readonly IRecommService _service;
 
         private readonly ILogger<PostsController> _logger;
 
-        public PostsController(ILogger<PostsController> logger)
+        public PostsController(ILogger<PostsController> logger, IRecommService service)
         {
             _logger = logger;
+            _service = service;
         }
-
+       
         [HttpGet("{id}")]
 
         public ActionResult<IEnumerable<Posts>> Get(int id)

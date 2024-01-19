@@ -15,6 +15,8 @@ builder.Services.AddTransient<IMongoDbSettings>(sp => new MongoDbSettings
 });
 builder.Services.AddTransient<IRecommService, RecommService>();
 builder.Services.AddTransient<IMongoRepository<Posts>, MongoRepository<Posts>>();
+builder.Services.AddTransient<IMongoRepository<User>, MongoRepository<User>>();
+
 
 
 // Add services to the container.

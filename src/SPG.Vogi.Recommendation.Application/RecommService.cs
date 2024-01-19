@@ -1,4 +1,5 @@
 ﻿using SPG.Vogi.Recommendation.DomainModel;
+using SPG.Vogi.Recommendation.DomainModel.Exceptions;
 using SPG.Vogi.Recommendation.DomainModel.Interfaces;
 using SPG.Vogi.Recommendation.Repository;
 using System;
@@ -10,9 +11,12 @@ namespace SPG.Vogi.Recommendation.Application
     public class RecommService : IRecommService
     {
         IMongoRepository<Posts> _mongoRepository;
-        public RecommService(IMongoRepository<Posts> mongoRepository)
+        IMongoRepository<User> _mongoRepositoryUser;
+
+        public RecommService(IMongoRepository<Posts> mongoRepository, IMongoRepository<User> mongoRepositoryUser)
         {
             _mongoRepository = mongoRepository;
+            _mongoRepositoryUser = mongoRepositoryUser;
         }
 
 
@@ -30,7 +34,13 @@ namespace SPG.Vogi.Recommendation.Application
         }
         public List<Posts> getPosts(int Userid)
         {
+            if (_mongoRepositoryUser.FindById(Userid.ToString()) is null)
+                 throw new UserNotFoundException("User with ID:" + Userid + "not found!");
+                
             var posts =  _mongoRepository.AsQueryable().ToList();
+            if (posts is null || posts.Count == 0)
+                throw new PostNotFoundException();
+
             var random = new Random();
             int index = random.Next(posts.Count);
 
