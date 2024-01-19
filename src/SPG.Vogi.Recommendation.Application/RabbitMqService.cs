@@ -26,16 +26,16 @@ namespace SPG.Vogi.Recommendation.Application
         public string ReceiveMessage(string queue)
         {
             var consumer = new EventingBasicConsumer(_channel);
+            string message = null;
             consumer.Received += (model, ea) =>
             {
                 var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
+                message = Encoding.UTF8.GetString(body);
                 _channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
-                return message;
             };
 
             _channel.BasicConsume(queue: queue, autoAck: false, consumer: consumer);
-            return null;
+            return message;
         }
     }
 }
