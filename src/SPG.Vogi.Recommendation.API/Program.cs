@@ -1,3 +1,4 @@
+using RabbitMQ.Client;
 using SPG.Vogi.Recommendation.Application;
 using SPG.Vogi.Recommendation.DomainModel;
 using SPG.Vogi.Recommendation.DomainModel.Interfaces;
@@ -17,6 +18,28 @@ builder.Services.AddTransient<IRecommService, RecommService>();
 builder.Services.AddTransient<IMongoRepository<Posts>, MongoRepository<Posts>>();
 builder.Services.AddTransient<IMongoRepository<User>, MongoRepository<User>>();
 
+//RabbitMQS
+builder.Services.AddSingleton<IConnectionFactory>(provider =>
+{
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    var rabbitMqConfig = configuration.GetSection("RabbitMq").Get<RabbitMqConfig>();
+
+    var factory = new ConnectionFactory
+    {
+        HostName = rabbitMqConfig.Host,
+        UserName = rabbitMqConfig.Username,
+        Password = rabbitMqConfig.Password
+    };
+
+    return factory;
+});
+
+builder.Services.AddSingleton<IModel>(provider =>
+{
+    var connectionFactory = provider.GetRequiredService<IConnectionFactory>();
+    var connection = connectionFactory.CreateConnection();
+    return connection.CreateModel();
+});
 
 
 // Add services to the container.

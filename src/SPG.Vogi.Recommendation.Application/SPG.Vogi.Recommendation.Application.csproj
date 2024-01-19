@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
     <PackageReference Include="RepositoryMongo_Generic" Version="1.0.0" />
   </ItemGroup>
 
