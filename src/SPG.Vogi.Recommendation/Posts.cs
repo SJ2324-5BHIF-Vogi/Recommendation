@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SPG.Vogi.Recommendation.DomainModel.Exceptions;
 
 namespace SPG.Vogi.Recommendation.DomainModel
 {
@@ -30,5 +31,21 @@ namespace SPG.Vogi.Recommendation.DomainModel
 
         //public Dictionary<User, String> Comments { get; set; } = new Dictionary<User, String>();
 
+        public bool AddLike(User like)
+        {
+            bool containsEmail = _likes.Any(u => u.Email == like.Email);
+
+            if (containsEmail) return false;
+            _likes.Add(like);
+            return true;
+        }
+        
+        public bool RemoveLike(User like)
+        {
+            User likeToRemove = _likes.FirstOrDefault(u => u.Email == like.Email) ?? throw new UserNotFoundException("No user found in the list!");
+
+            _likes.Remove(likeToRemove);
+            return true;
+        }
     }
 }
