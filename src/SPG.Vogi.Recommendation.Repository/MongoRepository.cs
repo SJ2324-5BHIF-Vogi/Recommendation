@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Reflection.Metadata;
 using SPG.Vogi.Recommendation.DomainModel;
 using SPG.Vogi.Recommendation.DomainModel.Interfaces;
+using SPG.Vogi.Recommendation.Repository.Builders;
 using Document = SPG.Vogi.Recommendation.DomainModel.Document;
 
 namespace SPG.Vogi.Recommendation.Repository
@@ -16,8 +17,9 @@ namespace SPG.Vogi.Recommendation.Repository
 
         public MongoRepository(IMongoDbSettings settings)
         {
-
             var database = new MongoClient(settings.ConnectionString).GetDatabase(settings.DatabaseName);
+           // database.DropCollectionAsync("users");
+           // database.DropCollectionAsync("posts");
             _collection = database.GetCollection<TDocument>(GetCollectionName(typeof(TDocument)));
         }
 
@@ -32,6 +34,12 @@ namespace SPG.Vogi.Recommendation.Repository
         public virtual IQueryable<TDocument> AsQueryable()
         {
             return _collection.AsQueryable();
+        }
+
+        public virtual void DropDatabase()
+        {
+            _collection.Database.DropCollectionAsync("users");
+            _collection.Database.DropCollectionAsync("posts");
         }
 
         public virtual IEnumerable<TDocument> FilterBy(
@@ -108,7 +116,7 @@ namespace SPG.Vogi.Recommendation.Repository
             await _collection.FindOneAndReplaceAsync(filter, document);
         }
 
-        public void DeleteOne(Expression<Func<TDocument, bool>> filterExpression)
+        public void DeleteOne(FilterDefinition<TDocument> filterExpression)
         {
             _collection.FindOneAndDelete(filterExpression);
         }
@@ -143,6 +151,26 @@ namespace SPG.Vogi.Recommendation.Repository
         public Task DeleteManyAsync(Expression<Func<TDocument, bool>> filterExpression)
         {
             return Task.Run(() => _collection.DeleteManyAsync(filterExpression));
+        }
+
+        public IUserFilterBuilder<TDocument> FilterBuilderUser<TDocument>() where TDocument : User
+        {
+            return new UserFilterBuilder<TDocument>((IMongoCollection<TDocument>)_collection);
+        }
+        
+        public IUserUpdateBuilder<TDocument> UpdateBuilderUser<TDocument>(TDocument data) where TDocument : User
+        {
+            return new UserUpdateBuilder<TDocument>((IMongoCollection<TDocument>)_collection, data);
+        }
+        
+        public IPostFilterBuilder<TDocument> FilterBuilderPost<TDocument>() where TDocument : Posts
+        {
+            return new PostFilterBuilder<TDocument>((IMongoCollection<TDocument>)_collection);
+        }
+        
+        public IPostUpdateBuilder<TDocument> UpdateBuilderPost<TDocument>(TDocument data) where TDocument : Posts
+        {
+            return new PostUpdateBuilder<TDocument>((IMongoCollection<TDocument>)_collection, data);
         }
     }
 }

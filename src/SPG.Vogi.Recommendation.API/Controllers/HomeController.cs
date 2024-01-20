@@ -7,10 +7,12 @@ namespace SPG.Vogi.Recommendation.API.Controllers
     [Route("[controller]")]
     public class MessageController : ControllerBase
     {
+        private readonly ILogger<MessageController> _logger;
         private readonly RabbitMqService _rabbitMqService;
 
-        public MessageController(RabbitMqService rabbitMqService)
+        public MessageController(ILogger<MessageController> logger, RabbitMqService rabbitMqService)
         {
+            _logger = logger;
             _rabbitMqService = rabbitMqService;
         }
 
@@ -18,6 +20,7 @@ namespace SPG.Vogi.Recommendation.API.Controllers
         public IActionResult Send([FromBody] string message)
         {
             _rabbitMqService.SendMessage("messages", message);
+            _logger.LogInformation("Send request processed successfully");
             return Ok();
         }
 
@@ -27,10 +30,12 @@ namespace SPG.Vogi.Recommendation.API.Controllers
             var message = _rabbitMqService.ReceiveMessage("messages");
             if (message != null)
             {
+                _logger.LogInformation("Receive request processed successfully");
                 return Ok(message);
             }
             else
             {
+                _logger.LogInformation("No Content found");
                 return NoContent();
             }
         }

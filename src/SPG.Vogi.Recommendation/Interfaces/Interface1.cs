@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using MongoDB.Driver;
 
 namespace SPG.Vogi.Recommendation.DomainModel.Interfaces
 {
@@ -23,7 +24,7 @@ namespace SPG.Vogi.Recommendation.DomainModel.Interfaces
         Task InsertManyAsync(ICollection<TDocument> documents);
         void ReplaceOne(TDocument document);
         Task ReplaceOneAsync(TDocument document);
-        void DeleteOne(Expression<Func<TDocument, bool>> filterExpression);
+        void DeleteOne(FilterDefinition<TDocument> filterExpression);
         Task DeleteOneAsync(Expression<Func<TDocument, bool>> filterExpression);
         void DeleteById(string id);
         Task DeleteByIdAsync(string id);

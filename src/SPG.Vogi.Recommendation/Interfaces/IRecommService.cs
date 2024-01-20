@@ -10,7 +10,7 @@ namespace SPG.Vogi.Recommendation.DomainModel.Interfaces
     public interface IRecommService
     {
         List<string> searchForHashTags(string input);
-        List<Posts> getPosts(int userId);
+        List<Posts> getPosts(string userId);
     }
 
 }

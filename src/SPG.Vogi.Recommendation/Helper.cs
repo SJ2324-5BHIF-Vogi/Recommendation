@@ -22,7 +22,7 @@ namespace SPG.Vogi.Recommendation.DomainModel
     public interface IDocument
     {
         [BsonId]
-        [BsonRepresentation(BsonType.String)]
+        [BsonRepresentation(BsonType.ObjectId)]
         ObjectId Id { get; set; }
 
         DateTime CreatedAt { get; }

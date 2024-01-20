@@ -7,12 +7,12 @@ using SPG.Vogi.Recommendation.Repository;
 var builder = WebApplication.CreateBuilder(args);
 
 
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+string connectionString = "mongodb://localhost:27000";
 
 builder.Services.AddTransient<IMongoDbSettings>(sp => new MongoDbSettings
 {
     ConnectionString = connectionString,
-    DatabaseName = "mongodb"
+    DatabaseName = "RecommendationDb"
 });
 builder.Services.AddTransient<IRecommService, RecommService>();
 builder.Services.AddTransient<IMongoRepository<Posts>, MongoRepository<Posts>>();
@@ -32,6 +32,12 @@ builder.Services.AddSingleton<IConnectionFactory>(provider =>
     };
 
     return factory;
+});
+
+builder.Services.AddLogging(configure =>
+{
+    configure.AddConsole();
+    configure.AddDebug();
 });
 
 builder.Services.AddSingleton<IModel>(provider =>

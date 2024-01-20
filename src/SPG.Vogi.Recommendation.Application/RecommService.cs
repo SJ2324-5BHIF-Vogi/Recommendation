@@ -32,10 +32,10 @@ namespace SPG.Vogi.Recommendation.Application
             }
             return hashTags;
         }
-        public List<Posts> getPosts(int Userid)
+        public List<Posts> getPosts(string userId)
         {
-            if (_mongoRepositoryUser.FindById(Userid.ToString()) is null)
-                 throw new UserNotFoundException("User with ID:" + Userid + "not found!");
+            if (_mongoRepositoryUser.FindById(userId) is null)
+                 throw new UserNotFoundException("User with ID:" + userId + "not found!");
                 
             var posts =  _mongoRepository.AsQueryable().ToList();
             if (posts is null || posts.Count == 0)

@@ -18,14 +18,19 @@ namespace SPG.Vogi.Recommendation.API.Controllers
             _logger = logger;
             _service = service;
         }
-       
+
         [HttpGet("{id}")]
 
-        public ActionResult<IEnumerable<Posts>> Get(int id)
+        public ActionResult<IEnumerable<Posts>> Get(string id)
         {
             var result = _service.getPosts(id);
-            if(result is null)
+            
+            if (result is null){
+                _logger.LogInformation("An error occurred during processing or not found");
                 return NotFound();
+            }
+            
+            _logger.LogInformation("Get request processed successfully!");
             return Ok(result);
         }
     }

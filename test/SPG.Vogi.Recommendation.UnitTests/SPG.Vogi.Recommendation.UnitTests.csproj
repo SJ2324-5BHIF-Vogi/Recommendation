@@ -22,4 +22,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SPG.Vogi.Recommendation.Repository\SPG.Vogi.Recommendation.Repository.csproj" />
+    <ProjectReference Include="..\..\src\SPG.Vogi.Recommendation\SPG.Vogi.Recommendation.DomainModel.csproj" />
+  </ItemGroup>
+
 </Project>
