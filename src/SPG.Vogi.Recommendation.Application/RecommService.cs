@@ -5,22 +5,25 @@ using SPG.Vogi.Recommendation.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Extensions.Logging;
 
 namespace SPG.Vogi.Recommendation.Application
 {
     public class RecommService : IRecommService
     {
-        IMongoRepository<Posts> _mongoRepository;
-        IMongoRepository<User> _mongoRepositoryUser;
+        private readonly ILogger<RecommService> _logger;
+        private readonly IMongoRepository<Posts> _mongoRepository;
+        private readonly IMongoRepository<User> _mongoRepositoryUser;
 
-        public RecommService(IMongoRepository<Posts> mongoRepository, IMongoRepository<User> mongoRepositoryUser)
+        public RecommService(IMongoRepository<Posts> mongoRepository, IMongoRepository<User> mongoRepositoryUser, ILogger<RecommService> logger)
         {
             _mongoRepository = mongoRepository;
             _mongoRepositoryUser = mongoRepositoryUser;
+            _logger = logger;
         }
 
 
-        public List<string> searchForHashTags(string input)
+        public List<string> SearchForHashTags(string input)
         {
             //var input = "asdads sdfdsf #burgers, #rabbits dsfsdfds #sdf #dfgdfg";
             var regex = new Regex(@"#\w+");
@@ -30,16 +33,23 @@ namespace SPG.Vogi.Recommendation.Application
             {
                 hashTags.Add(match.ToString());
             }
+            _logger.LogInformation("Hashtags search initiated and delivered");
             return hashTags;
         }
-        public List<Posts> getPosts(string userId)
+        public List<Posts> GetPosts(string userId)
         {
             if (_mongoRepositoryUser.FindById(userId) is null)
-                 throw new UserNotFoundException("User with ID:" + userId + "not found!");
-                
+            {
+                _logger.LogInformation($"User with Id {userId} was not found!");
+                throw new UserNotFoundException("User with ID:" + userId + "not found!");
+            }
+
             var posts =  _mongoRepository.AsQueryable().ToList();
             if (posts is null || posts.Count == 0)
+            {
+                _logger.LogInformation($"No posts found!");
                 throw new PostNotFoundException();
+            }
 
             var random = new Random();
             int index = random.Next(posts.Count);
@@ -50,7 +60,14 @@ namespace SPG.Vogi.Recommendation.Application
                 index = random.Next(posts.Count);
                 returnvalue.Add(posts[index]);
             }
+            _logger.LogInformation($"Posts successfully recommended!");
             return returnvalue;
+        }
+
+        public List<Posts> GetAllPosts()
+        {
+            _logger.LogInformation($"Posts successfully recieved!");
+            return _mongoRepository.AsQueryable().ToList();
         }
 
 

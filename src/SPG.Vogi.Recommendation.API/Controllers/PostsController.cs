@@ -20,10 +20,23 @@ namespace SPG.Vogi.Recommendation.API.Controllers
         }
 
         [HttpGet("{id}")]
-
         public ActionResult<IEnumerable<Posts>> Get(string id)
         {
-            var result = _service.getPosts(id);
+            var result = _service.GetPosts(id);
+            
+            if (result is null){
+                _logger.LogInformation("An error occurred during processing or not found");
+                return NotFound();
+            }
+            
+            _logger.LogInformation("Get request processed successfully!");
+            return Ok(result);
+        }
+        
+        [HttpGet]
+        public ActionResult<IEnumerable<Posts>> GetAll()
+        {
+            var result = _service.GetAllPosts();
             
             if (result is null){
                 _logger.LogInformation("An error occurred during processing or not found");
